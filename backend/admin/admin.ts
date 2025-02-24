@@ -38,15 +38,27 @@ export const getDashboardData = api(
       },
       recentActivity: [
         {
-          id: "act-123",
+          id: "69",
           userId: "user-456",
-          action: "payment_processed",
+          action: "testing 1",
           timestamp: new Date().toISOString(),
         },
         {
-          id: "act-124",
+          id: "420",
           userId: "user-789",
-          action: "account_created",
+          action: "testing 2",
+          timestamp: new Date().toISOString(),
+        },
+        {
+          id: "911",
+          userId: "user-789",
+          action: "testing 3",
+          timestamp: new Date().toISOString(),
+        },
+        {
+          id: "9000",
+          userId: "user-789",
+          action: "testing 4",
           timestamp: new Date().toISOString(),
         },
       ],

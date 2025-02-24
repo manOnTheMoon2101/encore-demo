@@ -1,6 +1,6 @@
-import {redirect} from "next/navigation";
+import { redirect } from "next/navigation";
 import getRequestClient from "../lib/getRequestClient";
-import {admin, APIError, ErrCode} from "../lib/client";
+import { admin, APIError, ErrCode } from "../lib/client";
 
 export default async function Admin() {
   const client = getRequestClient();
@@ -14,15 +14,24 @@ export default async function Admin() {
   }
 
   if (error) {
-    if (error.code === ErrCode.Unauthenticated) redirect("/auth/unauthenticated?from=%2Fadmin");
+    if (error.code === ErrCode.Unauthenticated)
+      redirect("/auth/unauthenticated?from=%2Fadmin");
     else throw error;
   }
 
-  return (
-    <section>
-      <h1 className="text-3xl">Admin Dashboard</h1>
-      <br/>
-      <p>{response?.recentActivity.map((x:any) => x.id)}</p>
-    </section>
-  );
+  return <>
+  
+  
+  <div>
+    {response ? response.recentActivity.map((x: any) => (
+      <div key={x.id} className="flex justify-between items-center p-4 border-b">
+        <div>
+          <p className="text-lg font-semibold">{x.action}</p>
+          <p className="text-sm text-gray-500">{x.timestamp}</p>
+        </div>
+        <p className="text-lg font-semibold">{x.id}</p>
+      </div>
+    )) : null}
+    </div>
+  </>;
 }
