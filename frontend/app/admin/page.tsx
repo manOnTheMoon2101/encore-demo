@@ -8,7 +8,7 @@ export default async function Admin() {
   let error: APIError | undefined;
 
   try {
-    response = await client.admin.getDashboardData();
+    response = await (await client).admin.getDashboardData();
   } catch (err) {
     error = err as APIError;
   }

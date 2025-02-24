@@ -13,9 +13,9 @@ export async function POST(req: Request, res: NextApiResponse<ResponseData>) {
   const password = (data.get("password") as string) || "password";
 
   try {
-    const client = getRequestClient();
+    const client = await getRequestClient();
     const response = await client.auth.login({ email, password });
-    cookies().set("auth-token", response.token);
+    (await cookies()).set("auth-token", response.token);
   } catch (error) {
     console.error("Error logging in", error);
   }

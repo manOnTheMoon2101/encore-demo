@@ -15,12 +15,12 @@ const navLinks = [
   { href: "/admin", label: "Admin Dashboard" },
 ];
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const isLoggedIn = cookies().has("auth-token");
+  const isLoggedIn = (await cookies()).has("auth-token");
 
   return (
     <html lang="en">
