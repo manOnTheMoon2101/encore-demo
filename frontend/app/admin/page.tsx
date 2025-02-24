@@ -19,19 +19,27 @@ export default async function Admin() {
     else throw error;
   }
 
-  return <>
-  
-  
-  <div>
-    {response ? response.recentActivity.map((x: any) => (
-      <div key={x.id} className="flex justify-between items-center p-4 border-b">
-        <div>
-          <p className="text-lg font-semibold">{x.action}</p>
-          <p className="text-sm text-gray-500">{x.timestamp}</p>
-        </div>
-        <p className="text-lg font-semibold">{x.id}</p>
+  return (
+    <>
+      <div>
+        {response
+          ? response.recentActivity.map((x: any) => (
+              <div
+                key={x.id}
+                className="flex justify-between items-center p-4 border-b"
+              >
+                <div>
+                  <p className="text-lg font-semibold">{x.action}</p>
+                  <p className="text-sm text-gray-500">
+                    {" "}
+                    {new Date(x.timestamp).toISOString().split("T")[0]}
+                  </p>
+                </div>
+                <p className="text-lg font-semibold">{x.id}</p>
+              </div>
+            ))
+          : null}
       </div>
-    )) : null}
-    </div>
-  </>;
+    </>
+  );
 }
