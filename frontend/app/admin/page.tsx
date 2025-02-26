@@ -24,6 +24,7 @@ export default async function Admin() {
   return (
     <>
       <div>
+        Data
         {animals ? animals.data.map((animal : any) => <div key={animal.id}>{animal.name}</div>) : null}
       </div>
     </>
