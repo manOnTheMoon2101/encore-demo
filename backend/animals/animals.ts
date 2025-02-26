@@ -4,14 +4,14 @@ import { db } from "../src/db/index";
 import { animals } from "../src/db/schema";
 import { eq } from "drizzle-orm";
 
-// Define the request structure
+
 interface GetAnimalsRequest {
   query?: {
     type?: string;
   };
 }
 
-// Define the response structure
+
 interface AnimalsResponse {
   data: any[];
   userInfo: {
