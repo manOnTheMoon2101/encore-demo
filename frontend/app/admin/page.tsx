@@ -11,7 +11,6 @@ export default async function Admin() {
   try {
     response = await (await client).admin.getDashboardData();
     animals = await (await client).admin.getAnimalsData();
-    console.log(animals);
   } catch (err) {
     error = err as APIError;
   }
