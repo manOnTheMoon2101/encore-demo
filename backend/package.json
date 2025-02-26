@@ -7,9 +7,14 @@
   "type": "module",
   "devDependencies": {
     "@types/node": "^20",
+    "drizzle-kit": "^0.30.5",
+    "tsx": "^4.19.3",
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^0.10.4",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.40.0",
     "encore.dev": "^1.46.4"
   }
 }

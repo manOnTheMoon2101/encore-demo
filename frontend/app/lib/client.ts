@@ -69,6 +69,16 @@ export namespace admin {
           lastLogin: string;
         };
       }
+
+
+     export interface AnimalsResponse {
+        data: any[];
+        userInfo: {
+          id: string;
+          role: string;
+          lastLogin: string;
+        };
+      }
       
 
     export class ServiceClient {
@@ -82,6 +92,11 @@ export namespace admin {
         public async getDashboardData(): Promise<DashboardData> {
             const resp = await this.baseClient.callTypedAPI("GET", `/admin`);
             return await resp.json() as DashboardData;
+          }
+
+          public async getAnimalsData(): Promise<AnimalsResponse> {
+            const resp = await this.baseClient.callTypedAPI("GET", `/animals`);
+            return await resp.json() as AnimalsResponse;
           }
     }
 }

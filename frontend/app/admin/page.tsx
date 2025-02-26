@@ -5,10 +5,13 @@ import { admin, APIError, ErrCode } from "../lib/client";
 export default async function Admin() {
   const client = getRequestClient();
   let response: admin.DashboardData | undefined;
+  let animals: admin.AnimalsResponse | undefined;
   let error: APIError | undefined;
 
   try {
     response = await (await client).admin.getDashboardData();
+    animals = await (await client).admin.getAnimalsData();
+    console.log(animals);
   } catch (err) {
     error = err as APIError;
   }
@@ -22,23 +25,7 @@ export default async function Admin() {
   return (
     <>
       <div>
-        {response
-          ? response.recentActivity.map((x: any) => (
-              <div
-                key={x.id}
-                className="flex justify-between items-center p-4 border-b"
-              >
-                <div>
-                  <p className="text-lg font-semibold">{x.action}</p>
-                  <p className="text-sm text-gray-500">
-                    {" "}
-                    {new Date(x.timestamp).toISOString().split("T")[0]}
-                  </p>
-                </div>
-                <p className="text-lg font-semibold">{x.id}</p>
-              </div>
-            ))
-          : null}
+        {animals ? animals.data.map((animal : any) => <div key={animal.id}>{animal.name}</div>) : null}
       </div>
     </>
   );
